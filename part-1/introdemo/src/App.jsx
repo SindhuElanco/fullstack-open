@@ -10,17 +10,26 @@ const App = () => {
   const part3 = 'State of a component'
   const exercises3 = 14
 
+  const parts = [
+    {
+      name: part1,
+      exercises: exercises1
+    },
+    {
+      name: part2,
+      exercises: exercises2
+    },
+    {
+      name: part3,
+      exercises: exercises3
+    }
+  ]
+
   return (
     <div>
       <h1><Header course={course}/></h1>
       <p>
-        <Content part={part1} excercise={exercises1}/>
-      </p>
-      <p>
-        <Content part={part2} excercise={exercises2}/>
-      </p>
-      <p>
-        <Content part={part3} excercise={exercises3}/>
+        <Content parts={parts}/>
       </p>
       <p>Number of exercises <Total total={exercises1 + exercises2 + exercises3}/></p>
     </div>
