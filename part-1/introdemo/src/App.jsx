@@ -1,10 +1,14 @@
-import Content from "./Content"
-import Header from "./Header"
-import Total from "./Total"
-const App = () => {
+import Note from "./components/Notes"
+const App = ({notes}) => {
+  // const { notes } = props
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+        <Note key={note.id} note={note}/>
+        )}
+      </ul>
     </div>
   )
 }
