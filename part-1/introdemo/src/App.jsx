@@ -1,10 +1,25 @@
-import Content from "./Content"
-import Header from "./Header"
-import Total from "./Total"
+import { useState } from 'react'
+
 const App = () => {
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas' }
+  ]) 
+  const [newName, setNewName] = useState('')
+
   return (
     <div>
-      <h1>Hello World</h1>
+      <div>debug: {newName}</div>
+      <h2>Phonebook</h2>
+      <form>
+        <div>
+          name: <input />
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      ...
     </div>
   )
 }
