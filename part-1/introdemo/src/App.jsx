@@ -8,6 +8,13 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    const names = persons.map((p) => p.name)
+   
+    if(names.includes(newName)){
+      window.alert(`${newName} is already added to phonebook`)
+      setNewName('')
+      return
+    }
     setPersons([...persons, { name: newName }])
     setNewName('')
   }
