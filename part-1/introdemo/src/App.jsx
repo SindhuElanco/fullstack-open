@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import DisplayPerson from './components/DisplayPerson'
-import axios from 'axios'
+// import axios from 'axios'
+import personService from './services/person'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -11,12 +12,17 @@ const App = () => {
   const [searchName, setSearchName] = useState('')
 
   useEffect(() => {
-    axios
-    .get('http://localhost:3001/persons')
-    .then((res) => {
-      console.log('promise fulfilled')
-      setPersons(res.data)
-    })
+    // axios
+    // .get('http://localhost:3001/persons')
+    // .then((res) => {
+    //   console.log('promise fulfilled', res.data)
+    //   setPersons(res.data)
+    // })
+  personService
+  .getAll()
+  // .then((res) => console.log(res))
+  .then((res) => setPersons(res))
+
   },[])
   const handleSubmit = (event) => {
    
@@ -28,6 +34,11 @@ const App = () => {
       setNewName('')
       return
     }
+    const newPersonInfo = {
+      person: newName,
+      num: newNum
+    }
+    personService.create(newPersonInfo)
     setPersons([...persons,{ name: newName ,number: newNum}])
     setNewName('')
     setNewNum('')
